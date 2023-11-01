@@ -1,0 +1,20 @@
+{
+  "product1": {
+    "id": "3333",
+    "name": "Model N84",
+    "quantity": 1,
+    "priceProduct": 3000,
+    "description": "a simple mobile phone.",
+    "image": "/phone.jpg",
+    "company": "MOBILE PHONE CORPORATION"
+  },
+  "product2": {
+    "id": "2222",
+    "name": "Model N85",
+    "quantity": 1,
+    "priceProduct": 5000,
+    "description": "the lastest model.",
+    "image": "/phone.jpg",
+    "company": "MOBILE PHONE CORPORATION"
+  }
+}
