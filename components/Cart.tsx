@@ -8,7 +8,7 @@ import { Wallet } from '@mercadopago/sdk-react'
 
 function Payment({ preferenceId }: { preferenceId: string }) {
   return (
-            <Wallet initialization={{ preferenceId: preferenceId }}/>          
+            <Wallet initialization={{ preferenceId: preferenceId, redirectMode: 'modal' }}/>          
   )
 }
 
