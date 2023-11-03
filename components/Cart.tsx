@@ -3,9 +3,21 @@ import React, { useState } from 'react'
 import Product from './Product';
 import { Product as ProductType } from '@/types';
 
-export default function Cart({data} : {data: ProductType[]}) {
+
+import { Wallet } from '@mercadopago/sdk-react'
+
+function Payment({ preferenceId }: { preferenceId: string }) {
+  return (
+            <Wallet initialization={{ preferenceId: preferenceId }}/>          
+  )
+}
+
+export default function Cart({ data }: { data: ProductType[]}) {
     const [products, setProducts] = useState(data); 
-    const [amount, setAmount] = useState(products.reduce((acc, curr) => acc += curr.priceProduct * curr.quantity, 0)); 
+    const [amount, setAmount] = useState(products.reduce((acc, curr) => acc += curr.price * curr.quantity, 0)); 
+    const [preferenceId, setPreferenceId] = useState(undefined)
+    // const [loading, setLoading] = useState(false);
+
 
     function changeQuantity(e: React.ChangeEvent<HTMLInputElement>) {
         const updatedProducts = products.map(p => {
@@ -20,7 +32,23 @@ export default function Cart({data} : {data: ProductType[]}) {
             } 
         })
         setProducts(updatedProducts); 
-        setAmount(updatedProducts.reduce((acc, curr) => acc += curr.priceProduct * curr.quantity, 0)); 
+        setAmount(updatedProducts.reduce((acc, curr) => acc += curr.price * curr.quantity, 0)); 
+    }
+
+    async function createPreference() {
+        // setLoading(true);
+        const res = await fetch('/api', {
+            method: 'POST', 
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({data: products})
+        });
+        
+       
+        const data = await res.json();
+        setPreferenceId(data.id);
+        // setLoading(false);
     }
 
   return (
@@ -34,14 +62,22 @@ export default function Cart({data} : {data: ProductType[]}) {
           {
               products.map(product => <Product key={Math.random()} data={product} changeQuantity={changeQuantity} />)
           }
-          <hr className='bg-stone-950 border-0 h-px mx-4'/>
+          <hr className='bg-stone-950 border-0 h-px mx-4' />
           <div className='bg-stone-100 text-stone-950 rounded-b-2xl px-4 py-3 grid grid-cols-4 font-extrabold font-mono text-xl'>
-            <p className='font-extrabold col-span-2 underline decoration-2'>SUBTOTAL</p>
-            <p className='text-center col-span-2 place-self-end'>${amount}</p>
+                <p className='font-extrabold col-span-2 underline decoration-2'>SUBTOTAL</p>
+                <p className='text-center col-span-2 place-self-end'>${amount}</p>
           </div>
-          <div className='w-full flex justify-end py-2 px-2'> 
-          <button className='bg-stone-950  py-1 px-2 rounded  hover:bg-sky-500 transition-all'>Checkout</button>
-         </div>
+          <hr className='bg-stone-950 border-0 h-px mx-4' />
+          <div className='w-full flex justify-end py-2 px-2 h-24'> 
+          {
+              preferenceId === undefined ? <>
+                <div className='flex items-end'>
+                    <button className='bg-stone-950 py-2 px-8 rounded hover:bg-sky-500 transition-all' onClick={createPreference}>Checkout</button>
+                </div>
+              </> : <Payment preferenceId={preferenceId} />
+           }
+          </div>
+          
     </div>
   )
 }

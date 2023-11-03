@@ -3,18 +3,9 @@
     "id": "3333",
     "name": "Model N84",
     "quantity": 1,
-    "priceProduct": 3000,
-    "description": "a simple mobile phone.",
-    "image": "/phone.jpg",
-    "company": "MOBILE PHONE CORPORATION"
-  },
-  "product2": {
-    "id": "2222",
-    "name": "Model N85",
-    "quantity": 1,
-    "priceProduct": 5000,
-    "description": "the lastest model.",
-    "image": "/phone.jpg",
+    "price": 3000,
+    "description": "Dispositivo móvil de Tienda e-commerce",
+    "image": "https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "company": "MOBILE PHONE CORPORATION"
   }
 }

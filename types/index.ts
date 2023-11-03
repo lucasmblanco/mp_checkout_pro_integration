@@ -2,7 +2,7 @@ export interface Product {
     id: string,
     name: string,
     quantity: number,
-    priceProduct: number,
+    price: number,
     description: string, 
     totalAmount: number,
     image: string,
