@@ -39,9 +39,9 @@ export async function POST(req: NextRequest) {
   }, {
     items: [],
     back_urls: {
-      "success":` ${process.env.URL_LOCATION}/success`,
-      "failure":` ${process.env.URL_LOCATION}/failure`,
-      "pending":` ${process.env.URL_LOCATION}/pending`
+      "success":` ${process.env.URL_LOCATION}payment_status/success`,
+      "failure":` ${process.env.URL_LOCATION}payment_status/failure`,
+      "pending":` ${process.env.URL_LOCATION}payment_status/pending`
     },
     payment_methods: {
       excluded_payment_methods: [

@@ -14,7 +14,7 @@ export default function SuccessScreen() {
 
   async function fetchPaymentData() {
     const data = await fetch('/payments'); 
-    console.log(data.json()); 
+    console.log(data); 
     }
   
   
@@ -29,7 +29,7 @@ export default function SuccessScreen() {
         <p>{processingMode}</p>
         <p>{merchantAccountId}</p>
       </div>
-      <div><button onClick={fetchPaymentData}>Buscar Pago</button></div>
+      <div><button className="bg-sky-500 px-4 py-2 m-4"onClick={fetchPaymentData}>Buscar Pago</button></div>
     </>
   )
 }
