@@ -52,6 +52,7 @@ export async function POST(req: NextRequest) {
       excluded_payment_types: [],
       installments: 6
     },
+    auto_return: 'approved',
     payer: {
       name: 'Lalo',
       surname: 'Landa',
