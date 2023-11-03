@@ -15,9 +15,11 @@ export async function GET() {
         }
     try {
         const result = await payments.search(params); 
-        NextResponse.json(result); 
+        return NextResponse.json(result, {
+            status: 200
+        }); 
     } catch (error) {
-        NextResponse.json({ error: error }, {
+        return NextResponse.json({ error: error }, {
             status: 400
         })
         }
