@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { useSearchParams } from 'next/navigation';
 
@@ -12,14 +13,14 @@ export default function FailureScreen() {
     const merchantAccountId = searchParams.get('merchant_account_id');
 
   return (
-      <div>
-        <p>{collectionStatus}</p>
-        <p>{externalReference}</p>
-        <p>{paymentType}</p>
-        <p>{preferenceId}</p>
-        <p>{sideId}</p>
-        <p>{processingMode}</p>
-        <p>{merchantAccountId}</p>
-   </div>
+    <div className='bg-red-700 font-mono px-2'>
+    <p>Collection status: {collectionStatus}</p>
+    <p>External Reference: {externalReference}</p>
+    <p>PaymentType: {paymentType}</p>
+    <p>Preference ID: {preferenceId}</p>
+    <p>Side ID: {sideId}</p>
+    <p>Processing mode: {processingMode}</p>
+    <p>Merchant account ID: {merchantAccountId}</p>
+  </div>
   )
 }
