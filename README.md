@@ -1,3 +1,3 @@
-## EJERCICIO INTEGRACION MERCADO PAGO CHECKOUT PRO CON NEXTJS
+## INTEGRACION MERCADO PAGO CHECKOUT PRO
 
-Ejercicio de integracion del SDK de mercado pago "Checkout Pro".
+Ejercicio de integracion del SDK de mercado pago "Checkout Pro" usando NextJS.
